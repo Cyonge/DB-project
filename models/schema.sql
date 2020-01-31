@@ -1,5 +1,19 @@
-DROP DATABASE IF EXISTS exampledb;
-CREATE DATABASE exampledb;
+DROP DATABASE IF EXISTS financialdb;
+CREATE DATABASE financialdb;
 
-DROP DATABASE IF EXISTS testdb;
-CREATE DATABASE testdb;
+USE financialdb;
+
+CREATE TABLE spFiveHundred (
+  position INT NOT NULL,
+  artist VARCHAR(100) NULL,
+  song VARCHAR(100) NULL,
+  year INT NULL,
+  raw_total DECIMAL(10,4) NULL,
+  raw_usa DECIMAL(10,4) NULL,
+  raw_uk DECIMAL(10,4) NULL,
+  raw_eur DECIMAL(10,4) NULL,
+  raw_row DECIMAL(10,4) NULL,
+  PRIMARY KEY (position)
+);
+
+SELECT * FROM top5000;
