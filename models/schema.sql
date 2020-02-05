@@ -3,7 +3,7 @@ CREATE DATABASE financialdb;
 
 USE financialdb;
 
-CREATE TABLE spFiveHundred (
+CREATE TABLE spFiveHundreds (
   id INTEGER NOT NULL AUTO_INCREMENT,
   
   price_date DATE NULL,
@@ -12,4 +12,4 @@ CREATE TABLE spFiveHundred (
   PRIMARY KEY (id)
 );
 
-SELECT * FROM spFiveHundred;
+SELECT * FROM spFiveHundreds;
