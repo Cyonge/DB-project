@@ -1,53 +1,48 @@
 <div id="home">
-  <div class="container">
+  <div class="container-md">
     <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>Stock Up On Your Options!</h2>
-        <form class="clearfix mb-4" action="POST">
+      <div class="col-10 offset-1">
+        </br>
+        <head>
+          <h2><b>Stock Up On Your Options!</b></h2>
+        </head>
+        </br>
+        <div class="form-group">
+          <label for="example-text">Income Invested</label>
+          <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="$$$">
+      </div>
+      
+      <div class="dropdown">
+        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Time Period
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+          <button class="dropdown-item" type="button">1 Yr</button>
+          <button class="dropdown-item" type="button">6 M</button>
+          <button class="dropdown-item" type="button">1 M</button>
+        </div>
+        
+        <div class="dropdown">
+        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Stock Options
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+          <button class="dropdown-item" type="button">S&P 500</button>
+          <button class="dropdown-item" type="button">MDB</button>
+          <button class="dropdown-item" type="button">AMZ</button>
+          <button class="dropdown-item" type="button">TSLA</button>
+        </div>
+        <div>
 
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              Stock
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <button class="dropdown-item" type="button">S&P 500</button>
-              <button class="dropdown-item" type="button">MDB</button>
-              <button class="dropdown-item" type="button">AMZ</button>
-              <button class="dropdown-item" type="button">TSLA</button>
-            </div>
-            <div class="form-group">
-              <label for="example-text">Income Invested</label>
-              <input type="text" id="example-text" class="form-control" aria-describedby="example-text"
-                placeholder="$$$">
-            </div>
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                Time Period
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <button class="dropdown-item" type="button">1 Yr</button>
-                <button class="dropdown-item" type="button">6 M</button>
-                <button class="dropdown-item" type="button">1 M</button>
-              </div>
-              <form>
-                <button id="submit" class="btn btn-primary float-right">Generate Visual</button>
-              </form>
+          <button type="submit" id="submit" class="btn btn-light float-right">Generate Visual</button>
 
-              <ul id="example-list" class="list-group">
-                {{#each examples}}
-                <li data-id="{{this.id}}" class="list-group-item">
-                  <a href="example/{{this.id}}">{{this.text}}</a>
-                  <button class="btn btn-danger float-right delete">ｘ</button>
-                </li>
-                {{/each}}
-              </ul>
-            </div>
-          </div>
+        </div>
       </div>
     </div>
+  </div>
+</div>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="/js/index.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
