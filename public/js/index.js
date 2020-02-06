@@ -3,6 +3,8 @@ var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
+var stockPlaceHolder = "";
+
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -13,6 +15,16 @@ var API = {
       },
       type: "POST",
       url: "api/examples",
+      data: JSON.stringify(example)
+    });
+  },
+  submitStockAndTime: function(example) {
+    return $.ajax({
+      headers: {
+        "Content-Type": "application/json"
+      },
+      type: "POST",
+      url: "api/data",
       data: JSON.stringify(example)
     });
   },
@@ -66,17 +78,27 @@ var handleFormSubmit = function(event) {
 
   var example = {
     text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
+    // description: $exampleDescription.val().trim()
   };
 
-  if (!(example.text && example.description)) {
+  if (!(example.text)) {
     alert("You must enter an example text and description!");
     return;
   }
 
-  API.saveExample(example).then(function() {
-    refreshExamples();
-  });
+  // API.saveExample(example).then(function() {
+  //   refreshExamples();
+  // });
+  // this is what is reflective of what the user picked
+  console.log(stockPlaceHolder)
+  var backEndInfo = {
+    stock: stockPlaceHolder,
+    timeframe: 12, 
+
+  };
+  API.submitStockAndTime(backEndInfo).then(function(res){
+    console.log(res);
+  })
 
   $exampleText.val("");
   $exampleDescription.val("");
@@ -94,6 +116,15 @@ var handleDeleteBtnClick = function() {
   });
 };
 
+function saveStockChoice(){
+  stockPlaceHolder = this.innerHTML;
+  // will do the same with time span that we did with stockPlaceHolder, this.html timespan.
+  // will use time span element not .stock select
+}
+
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+
+var stockChoices = $(".stock-select").on("click", saveStockChoice);
+console.log(stockChoices);
