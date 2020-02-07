@@ -4,6 +4,7 @@ var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 var stockPlaceHolder = "";
+var timePlaceHolder = "";
 
 
 // The API object contains methods for each kind of request we'll make
@@ -90,14 +91,18 @@ var handleFormSubmit = function(event) {
   //   refreshExamples();
   // });
   // this is what is reflective of what the user picked
-  console.log(stockPlaceHolder)
+  // console.log(time)
+  console.log($exampleText.val().trim());
   var backEndInfo = {
     stock: stockPlaceHolder,
-    timeframe: 12, 
+    timeframe: timePlaceHolder,
+    userInput: $exampleText.val().trim(),
+    
 
   };
   API.submitStockAndTime(backEndInfo).then(function(res){
     console.log(res);
+    $('#yonge').append(res);
   })
 
   $exampleText.val("");
@@ -122,9 +127,16 @@ function saveStockChoice(){
   // will use time span element not .stock select
 }
 
+function saveTimeChoice(){
+  timePlaceHolder = this.innerHTML;
+}
+
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
 
 var stockChoices = $(".stock-select").on("click", saveStockChoice);
 console.log(stockChoices);
+
+var timeChoices = $(".time-select").on("click", saveTimeChoice);
+console.log(saveTimeChoice);
